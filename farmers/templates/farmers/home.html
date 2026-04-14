@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Land Data Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e8f5e9, #dcedc8);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #1b5e20;
+            font-size: 2.3rem;
+            font-weight: bold;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #5f6f65;
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        .success {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        form {
+            display: grid;
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2e4d34;
+            font-size: 0.95rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 15px;
+            border: 1px solid #c8d6c9;
+            border-radius: 10px;
+            font-size: 1rem;
+            background-color: #f9fcf8;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #43a047;
+            box-shadow: 0 0 0 3px rgba(67, 160, 71, 0.15);
+            background-color: #ffffff;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 15px;
+            background: linear-gradient(135deg, #2e7d32, #43a047);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.95;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Farmer Land Data Form</div>
+        <div class="subtitle">Enter farmer and land details below</div>
+
+        <!-- ✅ SUCCESS MESSAGE GOES HERE -->
+        {% if success %}
+            <div class="success">
+                ✔ Data submitted successfully!
+            </div>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="farmer_name">Farmer Name</label>
+                <input type="text" id="farmer_name" name="farmer_name" placeholder="Enter farmer name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone_number">Phone Number</label>
+                <input type="text" id="phone_number" name="phone_number" placeholder="Enter phone number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="parish">Parish</label>
+                <input type="text" id="parish" name="parish" placeholder="Enter parish" required>
+            </div>
+
+            <div class="form-group">
+                <label for="land_location">Land Location</label>
+                <input type="text" id="land_location" name="land_location" placeholder="Enter land location" required>
+            </div>
+
+            <div class="form-group">
+                <label for="land_size">Land Size (Acres)</label>
+                <input type="number" step="0.01" id="land_size" name="land_size" placeholder="Enter land size" required>
+            </div>
+
+            <div class="form-group">
+                <label for="crop_type">Crop Type</label>
+                <input type="text" id="crop_type" name="crop_type" placeholder="Enter crop type" required>
+            </div>
+
+            <button type="submit">Submit Data</button>
+        </form>
+    </div>
+</body>
+</html>
