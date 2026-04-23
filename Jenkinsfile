@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         EC2_USER    = "ubuntu"
-        EC2_HOST    = "3.134.89.131"
+        EC2_HOST    = "3.22.100.53"
         CRED_ID     = "ec2-ssh-private-key"
         PROJECT_DIR = "/home/ubuntu/farmer-system"
         REPO_URL    = "https://github.com/HajjieCharles/farmer-system.git"
@@ -48,7 +48,7 @@ pipeline {
 
     post {
         success {
-            echo "SUCCESS: Your site is live at http://3.134.89.131:8000"
+            echo "SUCCESS: Your site is live at http://3.22.100.53:8000"
         }
         failure {
             echo "FAILURE: Check Jenkins console output for errors."
