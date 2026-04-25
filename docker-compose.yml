@@ -1,0 +1,20 @@
+services:
+  web:
+    build: .
+    container_name: django_app
+    command: gunicorn farmer_system.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - .:/app
+    expose:
+      - "8000"
+
+  nginx:
+    image: nginx:stable-alpine
+    container_name: nginx_server
+    ports:
+      - "80:80"
+    volumes:
+      - .:/app
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - web
