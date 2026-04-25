@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         EC2_USER = "ubuntu"
-        EC2_HOST = "3.22.99.35"
+        EC2_HOST = "3.22.178.160"
         CRED_ID  = "ec2-ssh-private-key"
         PROJECT_DIR = "/home/ubuntu/farmer-system"
     }
